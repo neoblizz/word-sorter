@@ -1,0 +1,29 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Search Results for "{{ query }}"</h1>
+    {% if matches %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Frequency</th>
+                    <th>Part of Speech</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for match in matches %}
+                    <tr>
+                        <td>{{ match.word }}</td>
+                        <td>{{ match.frequency }}</td>
+                        <td>{{ match.part_of_speech }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No matches found for "{{ query }}".</p>
+    {% endif %}
+{% endblock %}
